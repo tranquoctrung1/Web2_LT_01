@@ -1,0 +1,42 @@
+<form method="POST">
+    <div class="form-group">
+        <label for="ProID">Product ID</label>
+        <input type="text" class="form-control" id="ProID" name="ProID" readonly value="{{this.Product.ProID}}">
+    </div>
+    <div class="form-group">
+        <label for="ProName">Product Name</label>
+        <input type="text" class="form-control" id="ProName" name="ProName" value="{{this.Product.ProName}}" autofocus>
+    </div>
+    <div class="form-group">
+        <label for="TinyDes">Tyni Description</label>
+        <input type="text" class="form-control" id="TinyDes" value="{{this.Product.TinyDes}}" name="TinyDes">
+    </div>
+    <div class="form-group">
+        <label for="Price">Price</label>
+        <input type="number" class="form-control" id="Price" value="{{this.Product.Price}}" name="Price" min="0">
+    </div>
+    <div class="form-group">Category ID </label>
+        <select class="form-control" id="CatID" name="CatID">
+            {{#each this.Categories}}
+                <option value={{CatID}}>{{CatName}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Quantity">Quantity</label>
+        <input type="number" class="form-control" id="Quantity" value="{{this.Product.Quantity}}" name="Quantity">
+    </div>
+    <div class="form-group">
+        <label for="FullDes">Full Description</label>
+        <textarea class="form-control" id="FullDes" name="FullDes" rows="3">{{this.Product.FullDes}}</textarea>
+    </div>
+    <div class="form-group d-flex justify-content-between align-items-center">
+        <a class="btn btn-success" href="/admin/products" role="button">
+            <i class="fa fa-backward mr-2" aria-hidden="true"></i></a>
+        <button type="submit" class="btn btn-danger" formaction="/admin/products/remove/{{this.Product.ProID}}">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
+        <button type="submit" class="btn btn-primary" formaction="/admin/products/update">Save</button>
+    </div>
+
+</form>

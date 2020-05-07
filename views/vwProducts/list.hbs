@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h4>Products</h4>
+    <a class="btn btn-success" href="/admin/products/add" role="button">
+      <i class="fa fa-plus mr-2" aria-hidden="true"></i>
+      Add Product</a>
+  </div>
+  {{#if this.empty}}
+  <div class="card-body">
+    <p class="card-text">Không có dữ liệu.</p>
+  </div>
+  {{else}}
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">#</th>
+        <th scope="col">Product</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each this.products}}
+      <tr>
+        <th scope="row" class="text-center">{{ProID}}</th>
+        <td>{{ProName}}</td>
+        <td>{{Price}}</td>
+        <td>{{Quantity}}</td>
+        <td class="text-right d-flex justify-content-end">
+          <a class="btn btn-primary btn-sm" href="/admin/products/edit/{{ProID}}" role="button">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </a>
+          <form method="POST">
+            <button type="submit" class="btn btn-danger btn-sm ml-2" formaction="/admin/products/remove/{{ProID}}">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+          </form>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{/if}}
+  <div class="card-footer text-muted">
+    Footer
+  </div>
+</div>
